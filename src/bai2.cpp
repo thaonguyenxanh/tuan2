@@ -4,19 +4,9 @@
 #include<list>
 #include<vector>
 using namespace std;
-#define max_len 255
 
 /*vector<string> */ void replaced(vector<string> string_vector, string str_found, string replaced_str) {
-	//vector<string>::size_type sz = string_vector.size();
-	//for (unsigned i = 0; i < sz; i++)
-	//{
-	//	size_t found = string_vector[i].find(str_found);
-	//	if (found != string::npos) {
-	//		cout << "Period found at: " << found << '\n';
-	//		string_vector[i].replace(string_vector[i].find(str_found), str_found.length(), replaced_str);
-	//		cout << string_vector[i] << endl;
-	//	}
-	//}
+
 	vector<string>::size_type sz = string_vector.size();
 	bool substring_was_found = false;
 	for (unsigned i = 0; i < sz; i++)
@@ -30,7 +20,6 @@ using namespace std;
 				}
 				string_vector[i].replace(string_vector[i].find(str_found), str_found.length(), replaced_str);
 			}
-
 		}
 		cout << string_vector[i] << endl;
 	}
@@ -55,15 +44,13 @@ void find_substring(vector<string> string_vector, string found_str) {
 				cout <<"column: "<< pos << ' ' << " line: " << i << endl;
 			}
 		}
-
+		cout << string_vector[i] << endl;
 	}
 }
 
 int main() {
 	int c;
 	string path;
-	string whole_file;
-	list<string> list_lines;
 	vector<string> vector_lines;
 	
 	int line = 1;
@@ -99,11 +86,11 @@ nhaplai:
 
 
 
-		cout << "1: Search\n2: Replace\n3: Exit" << endl;
-		cout << "choose one of three modes: " << endl;
-		cin >> c;
-		while (c<3)
+		while (1)
 		{
+			cout << "1: Search\n2: Replace\n3: Exit" << endl;
+			cout << "choose one of three modes: " << endl;
+			cin >> c;
 			switch (c)
 			{
 
@@ -113,8 +100,10 @@ nhaplai:
 				cout << "enter string to find: " << endl;
 				cin >> found_string;
 				find_substring(vector_lines, found_string);
+				//getchar();
+				//return 3;
+				break;
 			}
-			break;
 
 
 			case 2:
@@ -137,6 +126,10 @@ nhaplai:
 				//}
 
 			}
+			break;
+			case 3:
+				return 0;
+				break;
 			break;
 
 			}
